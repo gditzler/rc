@@ -11,13 +11,8 @@ set ruler
 set expandtab    "convert tabs to spaces
 set scrolloff=5
 set title        "add the title of the file to the shell
-set rtp+=~/.vim/bundle/vundle/
 set ignorecase   "case insensitive search
 set smartcase    "case sensitive when upper case is present
-
-call vundle#rc()
-Bundle 'gmarik/vundle'
-Bundle 'terryma/vim-multiple-cursors.git'
 
 filetype plugin indent on    
 
