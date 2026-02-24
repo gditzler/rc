@@ -1,11 +1,11 @@
 return {
-  -- Colorscheme
+  -- Colorscheme (Claude theme - defined in colors/claude.lua)
   {
-    "catppuccin/nvim",
-    name = "catppuccin",
+    dir = vim.fn.stdpath("config"),
+    name = "claude-theme",
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme("catppuccin-mocha")
+      vim.cmd.colorscheme("claude")
     end,
   },
 
@@ -38,7 +38,32 @@ return {
     "nvim-lualine/lualine.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     opts = {
-      options = { theme = "catppuccin" },
+      options = {
+        theme = {
+          normal = {
+            a = { fg = "#1A1612", bg = "#D97757", gui = "bold" },
+            b = { fg = "#DDD5C8", bg = "#2D2824" },
+            c = { fg = "#B5ADA1", bg = "#231F1B" },
+          },
+          insert = {
+            a = { fg = "#1A1612", bg = "#8EAB6E", gui = "bold" },
+          },
+          visual = {
+            a = { fg = "#1A1612", bg = "#B39FD0", gui = "bold" },
+          },
+          replace = {
+            a = { fg = "#1A1612", bg = "#D0838A", gui = "bold" },
+          },
+          command = {
+            a = { fg = "#1A1612", bg = "#DEB974", gui = "bold" },
+          },
+          inactive = {
+            a = { fg = "#8A8278", bg = "#231F1B" },
+            b = { fg = "#8A8278", bg = "#231F1B" },
+            c = { fg = "#635B52", bg = "#1A1612" },
+          },
+        },
+      },
     },
   },
 
