@@ -27,9 +27,7 @@ return {
           vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
           vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
           vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
-          vim.keymap.set("n", "<leader>f", function()
-            vim.lsp.buf.format({ async = true })
-          end, opts)
+          -- Formatting handled by conform.nvim (<leader>f)
         end,
       })
 
@@ -40,8 +38,24 @@ return {
         capabilities = capabilities,
       })
 
+      -- Configure julials manually (Mason's launcher overrides JULIA_LOAD_PATH)
+      vim.lsp.config("julials", {
+        cmd = {
+          "julia",
+          "--startup-file=no",
+          "--history-file=no",
+          "--depwarn=no",
+          "-e", [[
+            using LanguageServer
+            runserver()
+          ]],
+        },
+        filetypes = { "julia" },
+        root_markers = { "Project.toml", "JuliaProject.toml", ".git" },
+      })
+
       -- Enable servers (mason-lspconfig handles installation)
-      vim.lsp.enable({ "lua_ls", "pyright", "rust_analyzer", "ts_ls" })
+      vim.lsp.enable({ "lua_ls", "pyright", "rust_analyzer", "ts_ls", "julials" })
 
       -- Completion setup
       local cmp = require("cmp")

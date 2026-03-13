@@ -1,11 +1,11 @@
 return {
-  -- Colorscheme (Claude theme - defined in colors/claude.lua)
+  -- Colorscheme (Solarized Dark)
   {
-    dir = vim.fn.stdpath("config"),
-    name = "claude-theme",
+    "ishan9299/nvim-solarized-lua",
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme("claude")
+      vim.o.background = "dark"
+      vim.cmd.colorscheme("solarized")
     end,
   },
 
@@ -39,30 +39,7 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     opts = {
       options = {
-        theme = {
-          normal = {
-            a = { fg = "#1A1612", bg = "#D97757", gui = "bold" },
-            b = { fg = "#DDD5C8", bg = "#2D2824" },
-            c = { fg = "#B5ADA1", bg = "#231F1B" },
-          },
-          insert = {
-            a = { fg = "#1A1612", bg = "#8EAB6E", gui = "bold" },
-          },
-          visual = {
-            a = { fg = "#1A1612", bg = "#B39FD0", gui = "bold" },
-          },
-          replace = {
-            a = { fg = "#1A1612", bg = "#D0838A", gui = "bold" },
-          },
-          command = {
-            a = { fg = "#1A1612", bg = "#DEB974", gui = "bold" },
-          },
-          inactive = {
-            a = { fg = "#8A8278", bg = "#231F1B" },
-            b = { fg = "#8A8278", bg = "#231F1B" },
-            c = { fg = "#635B52", bg = "#1A1612" },
-          },
-        },
+        theme = "solarized_dark",
       },
     },
   },
@@ -96,5 +73,20 @@ return {
     "folke/which-key.nvim",
     event = "VeryLazy",
     opts = {},
+  },
+
+  -- Window picker
+  {
+    "s1n7ax/nvim-window-picker",
+    version = "2.*",
+    opts = {
+      hint = "floating-big-letter",
+      filter_rules = {
+        bo = {
+          filetype = { "neo-tree", "neo-tree-popup", "notify" },
+          buftype = { "terminal", "quickfix" },
+        },
+      },
+    },
   },
 }
