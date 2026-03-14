@@ -1,0 +1,28 @@
+# themes
+theme = iTerm2 Solarized Dark
+
+# fonts
+font-family = JetBrainsMono Nerd Font
+font-size = 14
+font-thicken = true
+
+# programming ligatures
+font-feature = +liga # transforms => != etc into single glyphs
+font-feature = +calt # contextual alternatives
+font-feature = +dlig # discretionary ligatures (disabled by default in 1.2.0)
+
+# cursor style
+cursor-style = block
+cursor-style-blink = true
+
+# window behavior
+window-save-state = always
+window-decoration = true
+shell-integration-features = no-cursor,sudo,title
+confirm-close-surface = false
+
+# window patterns
+# window-padding-x = 16
+# window-padding-y = 16
+# window-padding-balance = true
+# window-padding-color = background
