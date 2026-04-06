@@ -20,3 +20,4 @@ alias path='echo $PATH | tr ":" "\n"'  # Pretty print PATH
 alias df="df -h"        # Human-readable disk usage
 alias du="du -h"        # Human-readable directory size
 alias reload="source ~/.zshrc"
+alias nv="nvim"

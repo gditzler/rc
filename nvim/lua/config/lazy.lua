@@ -1,13 +1,4 @@
-require("lazy").setup({
-	spec = {
-		{ "LazyVim/LazyVim", import = "lazyvim.plugins" },
-		{ import = "plugins" },
-		{ import = "lazyvim.plugins.extras.dap.core" },
-	},
-	defaults = { lazy = false, version = false },
-	checker = { enabled = true },
-})
-
+-- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
 	local out = vim.fn.system({
@@ -23,3 +14,17 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 	end
 end
 vim.opt.rtp:prepend(lazypath)
+
+-- Set leader key before lazy
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
+require("lazy").setup({
+	spec = {
+		{ "LazyVim/LazyVim", import = "lazyvim.plugins" },
+		{ import = "lazyvim.plugins.extras.dap.core" },
+		{ import = "plugins" },
+	},
+	defaults = { lazy = false, version = false },
+	checker = { enabled = true },
+})

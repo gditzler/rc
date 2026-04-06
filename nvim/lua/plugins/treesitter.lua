@@ -7,9 +7,9 @@ return {
       local parsers = {
         "lua", "python", "rust", "javascript", "typescript",
         "html", "css", "json", "yaml", "markdown", "bash",
-        "julia", "amber",
+        "julia",
       }
-      
+
       -- Install parsers if missing
       for _, parser in ipairs(parsers) do
         local ok, _ = pcall(vim.treesitter.language.inspect, parser)
@@ -17,7 +17,7 @@ return {
           vim.cmd("TSInstall " .. parser)
         end
       end
-      
+
       -- Enable treesitter highlighting for all buffers
       vim.api.nvim_create_autocmd("FileType", {
         callback = function()

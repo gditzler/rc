@@ -1,11 +1,11 @@
 return {
-  -- Colorscheme (Solarized Dark)
+  -- Colorscheme (Cursor Dark)
   {
-    "ishan9299/nvim-solarized-lua",
+    "ydkulks/cursor-dark.nvim",
     priority = 1000,
     config = function()
-      vim.o.background = "dark"
-      vim.cmd.colorscheme("solarized")
+      require("cursor-dark").setup()
+      vim.cmd.colorscheme("cursor-dark")
     end,
   },
 
@@ -39,7 +39,7 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     opts = {
       options = {
-        theme = "solarized_dark",
+        theme = "auto",
       },
     },
   },
