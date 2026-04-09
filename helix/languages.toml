@@ -1,0 +1,74 @@
+# ~/.config/helix/languages.toml
+
+# ── Python ───────────────────────────────────────────────────────
+[[language]]
+name = "python"
+language-servers = ["pyright"]
+formatter = { command = "ruff", args = ["format", "-"] }
+auto-format = true
+indent = { tab-width = 4, unit = "    " }
+
+[language-server.pyright]
+command = "pyright-langserver"
+args = ["--stdio"]
+
+[language-server.pyright.config.python.analysis]
+typeCheckingMode = "basic"
+
+# ── Rust ─────────────────────────────────────────────────────────
+[[language]]
+name = "rust"
+auto-format = true
+
+[language-server.rust-analyzer]
+command = "rust-analyzer"
+
+[language-server.rust-analyzer.config]
+check.command = "clippy"
+
+[language-server.rust-analyzer.config.cargo]
+features = "all"
+
+# ── TOML ─────────────────────────────────────────────────────────
+[[language]]
+name = "toml"
+formatter = { command = "taplo", args = ["fmt", "-"] }
+auto-format = true
+
+# ── Julia ────────────────────────────────────────────────────────
+[[language]]
+name = "julia"
+language-servers = ["julia-lsp"]
+
+[language-server.julia-lsp]
+command = "julia"
+args = [
+  "--startup-file=no",
+  "--history-file=no",
+  "-e",
+  "using LanguageServer; runserver()"
+]
+
+# ── Markdown ─────────────────────────────────────────────────────
+[[language]]
+name = "markdown"
+soft-wrap.enable = true
+formatter = { command = "prettier", args = ["--parser", "markdown"] }
+
+# ── JSON ─────────────────────────────────────────────────────────
+[[language]]
+name = "json"
+formatter = { command = "prettier", args = ["--parser", "json"] }
+auto-format = true
+
+# ── YAML ─────────────────────────────────────────────────────────
+[[language]]
+name = "yaml"
+formatter = { command = "prettier", args = ["--parser", "yaml"] }
+auto-format = true
+
+# ── Go ───────────────────────────────────────────────────────────
+[[language]]
+name = "go"
+auto-format = true
+formatter = { command = "goimports" }

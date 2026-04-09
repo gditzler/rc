@@ -1,0 +1,141 @@
+# ~/.config/helix/config.toml
+
+theme = "cursor-dark"
+
+[editor]
+# Line numbers — relative is essential for `5j`, `12k` style jumps
+line-number = "relative"
+# True color — required for hex colors in your theme
+true-color = true
+# Show matching brackets as you move
+auto-pairs = true
+# Highlight the current line
+cursorline = true
+# Column ruler (helpful for Python/Rust convention)
+rulers = [80, 120]
+# Middle-click paste in terminals
+middle-click-paste = true
+# Scrolloff — keep context around cursor (like vim scrolloff)
+scrolloff = 8
+# Shell — use your default
+shell = ["zsh", "-c"]
+# Bufferline — shows open buffers like tabs at the top
+bufferline = "multiple"
+# Gutters: line numbers + diagnostics + diff + spacer
+gutters = ["diagnostics", "spacer", "line-numbers", "spacer", "diff"]
+# Idle timeout for LSP hover/diagnostics popup (ms)
+idle-timeout = 250
+# Completion trigger length
+completion-trigger-len = 1
+# Color modes — shows different colors per mode in the statusline
+color-modes = true
+# Automatically reload files changed on disk
+auto-save = false
+
+[editor.cursor-shape]
+# Block in normal, bar in insert, underline in select — matches your LazyVim setup
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.file-picker]
+# Show hidden files in picker (dotfiles, .config, etc.)
+hidden = false
+# Respect .gitignore
+git-ignore = true
+# Max depth for file picker traversal
+max-depth = 12
+
+[editor.statusline]
+# Left: mode, spinner, filename, modifications
+left = ["mode", "spinner", "file-name", "file-modification-indicator"]
+# Center: nothing (clean)
+center = []
+# Right: diagnostics, selections, position, file-encoding, file-type
+right = ["diagnostics", "selections", "register", "position", "file-encoding", "file-type"]
+# Separator character
+separator = "│"
+# Mode text — short and clean
+mode.normal = "NOR"
+mode.insert = "INS"
+mode.select = "SEL"
+
+[editor.lsp]
+# Show LSP diagnostic inline (virtual text)
+display-messages = true
+# Auto signature help
+auto-signature-help = true
+# Show inlay hints (type annotations, parameter names)
+display-inlay-hints = true
+
+[editor.indent-guides]
+# Show indent guides (like indent-blankline in Neovim)
+render = true
+character = "│"
+skip-levels = 1
+
+[editor.soft-wrap]
+# Enable soft wrap for markdown/prose files
+# (you can override per-language in languages.toml)
+enable = false
+
+[editor.smart-tab]
+# Tab key does smart things: indent, complete, snippet-next
+enable = true
+
+# ── Keybindings ──────────────────────────────────────────────────
+
+[keys.normal]
+# Quick save — muscle memory from your Ctrl-s tmux prefix, use a different bind
+"A-w" = ":write"
+# Quick buffer close
+"A-q" = ":buffer-close"
+# Buffer navigation (like bn/bp in vim)
+"A-l" = ":buffer-next"
+"A-h" = ":buffer-previous"
+# Center screen after search
+"n" = ["search_next", "align_view_center"]
+"N" = ["search_prev", "align_view_center"]
+# Quick comment toggle
+"A-/" = "toggle_comments"
+# Esc also clears search highlights
+"esc" = ["collapse_selection", "keep_primary_selection"]
+
+[keys.normal.space]
+# Muscle memory helpers that mirror common LazyVim binds
+"e" = "file_picker"            # Like <leader>ff
+"E" = "file_picker_in_current_directory"
+"o" = "file_picker"            # Alternative mnemonic
+"/" = "global_search"          # Like <leader>/
+"g" = "changed_file_picker"    # Git changed files
+"d" = "diagnostics_picker"     # Workspace diagnostics
+
+[keys.normal.space.l]
+# LSP sub-menu (like LazyVim's <leader>l namespace)
+"r" = "rename_symbol"
+"a" = "code_action"
+"d" = "goto_definition"
+"D" = "goto_declaration"
+"i" = "goto_implementation"
+"t" = "goto_type_definition"
+"R" = "goto_reference"
+"s" = "symbol_picker"
+"S" = "workspace_symbol_picker"
+"h" = "hover"
+"f" = "format_selections"
+
+[keys.normal.space.w]
+# Window management (supplement to Ctrl-w)
+"v" = "vsplit"
+"s" = "hsplit"
+"q" = ":quit"
+
+[keys.insert]
+# Quick escape alternatives
+"j" = { "k" = "normal_mode" }  # jk to escape — classic
+
+[keys.select]
+# Same search centering in select mode
+"n" = ["search_next", "align_view_center"]
+"N" = ["search_prev", "align_view_center"]
+
